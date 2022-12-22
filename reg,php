@@ -1,0 +1,21 @@
+<?php
+$connection=mysqli_connect("localhost:3307","root","");
+$db=mysqli_select_db($connection,'demo');
+if(isset($_POST['sign']))
+{
+    $username=$_POST['name'];
+    $email=$_POST['email'];
+    $password=$_POST['password'];
+    $gender=$_POST['gender'];
+
+    $query="insert into login_info(name,email,password,gender) values('$username','$email','$password','$gender')";
+    $query_run= mysqli_query($connection, $query);
+    if($query_run)
+    {
+        echo '<script type="text/javascript">alert("data saved")</script>';
+    }
+    else{
+        echo '<script type="text/javascript">alert("data not saved")</script>';
+    }
+}
+?>
